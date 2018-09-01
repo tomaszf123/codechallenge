@@ -1,0 +1,411 @@
+swagger: "2.0"
+info:
+  description: "HSBC code challenge"
+  version: "1.0.0"
+  title: "Code challenge"
+
+basePath: "/api"
+tags:
+- name: "posts"
+  description: "Information about posts"
+- name: "users"
+  description: "Information about users, their posts and followees"
+paths:
+  /posts:
+    get:
+      tags:
+      - "posts"
+      summary: "Get all posts"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+
+  /posts/{id}:
+    get:
+      tags:
+      - "posts"
+      summary: "Get details of post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Post id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+
+    put:
+      tags:
+      - "posts"
+      summary: "Modify post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Post id"
+        required: true
+        type: "integer"
+      - name: "postRequest"
+        in: "body"
+        description: "Modified post text"
+        required: true
+        schema:
+          $ref: "#/definitions/PostRequest"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+        400:
+          description: "Text size is incorrect"
+        404:
+          description: "Post not found"
+
+  /users:
+    get:
+      tags:
+      - "users"
+      summary: "Get all users"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/UserResponse"
+
+    post:
+      tags:
+      - "users"
+      summary: "Create user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userRequest"
+        in: "body"
+        description: "Create new user"
+        required: true
+        schema:
+          $ref: "#/definitions/PostRequest"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/UserResponse"
+
+  /users/{id}:
+    get:
+      tags:
+      - "users"
+      summary: "Get details of user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/UserResponse"
+
+  /users/{userId}/follow/{followeeId}:
+    post:
+      tags:
+      - "users"
+      summary: "Add followee to user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      - name: "followeeId"
+        in: "path"
+        description: "Folowee id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+        400:
+          description: "User is already followed"
+        404:
+          description: "User of folowee does not exist"
+
+    delete:
+      tags:
+      - "users"
+      summary: "Delete followee from user"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      - name: "followeeId"
+        in: "path"
+        description: "Folowee id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+        404:
+          description: "User of folowee does not exists"
+
+  /users/{id}/posts:
+    get:
+      tags:
+      - "users"
+      summary: "Get all user posts (Wall)"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+        404:
+          description: "User does not exists"
+
+    post:
+      tags:
+      - "posts"
+      summary: "Get details of post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      - name: "postRequest"
+        in: "body"
+        description: "Modified post"
+        required: true
+        schema:
+          $ref: "#/definitions/PostRequest"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+        400:
+          description: "Text size is incorrect"
+        404:
+          description: "When user or post does not exists"
+
+  /users/{id}/timeline:
+    get:
+      tags:
+      - "users"
+      summary: "Get all user folowees posts (Timeline)"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+        404:
+          description: "User does not exists"
+
+  /users/{userId}/posts/{postId}:
+    get:
+      tags:
+      - "posts"
+      summary: "Get details of post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      - name: "postId"
+        in: "path"
+        description: "Post id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+        404:
+          description: "User or post does not exists"
+
+    delete:
+      tags:
+      - "posts"
+      summary: "Delete post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      - name: "postId"
+        in: "path"
+        description: "Post id"
+        required: true
+        type: "integer"
+      responses:
+        200:
+          description: "Success"
+        404:
+          description: "User or post does not exists"
+
+
+    put:
+      tags:
+      - "posts"
+      summary: "Modify post"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "userId"
+        in: "path"
+        description: "User id"
+        required: true
+        type: "integer"
+      - name: "postId"
+        in: "path"
+        description: "Post id"
+        required: true
+        type: "integer"
+      - name: "postRequest"
+        in: "body"
+        description: "Post to be created"
+        required: true
+        schema:
+          $ref: "#/definitions/PostRequest"
+      responses:
+        200:
+          description: "Success"
+          schema:
+            $ref: "#/definitions/PostResponse"
+        400:
+          description: "Text size is incorrect"
+        404:
+          description: "User or post does not exists"
+
+definitions:
+  PostRequest:
+    type: "object"
+    properties:
+      text:
+        type: "string"
+
+  PostResponse:
+    type: "object"
+    properties:
+      posts:
+        type: "array"
+        items:
+          $ref: "#/definitions/Post"
+
+  Post:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      text:
+        type: "string"
+        minLength: 1
+        maxLength: 140
+      creationDate:
+        type: "string"
+        format: "date-time"
+
+  UserRequest:
+    type: "object"
+    properties:
+      username:
+        type: "string"
+
+  UserResponse:
+    type: "object"
+    properties:
+      users:
+        type: "array"
+        items:
+          $ref: "#/definitions/User"
+
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      username:
+        type: "string"
+      posts:
+        type: "array"
+        items:
+          $ref: "#/definitions/Post"
+      folowees:
+        type: "array"
+        items:
+          $ref: "#/definitions/User"

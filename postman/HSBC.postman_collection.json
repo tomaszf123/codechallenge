@@ -1,0 +1,381 @@
+{
+	"id": "1abe5d1d-9f5b-41fe-8387-a0a7e62b8add",
+	"name": "HSBC",
+	"description": "",
+	"auth": null,
+	"events": null,
+	"variables": [],
+	"order": [],
+	"folders_order": [
+		"c170d465-9b32-422b-8506-4236fea43d3d"
+	],
+	"folders": [
+		{
+			"id": "03762656-b5a7-471e-a387-a98d64d66939",
+			"name": "Posts",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "1abe5d1d-9f5b-41fe-8387-a0a7e62b8add",
+			"folder": "c170d465-9b32-422b-8506-4236fea43d3d",
+			"order": [
+				"1fc4aae6-c0b0-43a6-901a-12781f549c42",
+				"d6d7f1c2-bd49-469f-8e5c-79b5993c181f",
+				"9a88cb5b-2504-4623-9f9b-11d7d8cd394f"
+			],
+			"folders_order": []
+		},
+		{
+			"id": "c170d465-9b32-422b-8506-4236fea43d3d",
+			"name": "Requests",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "1abe5d1d-9f5b-41fe-8387-a0a7e62b8add",
+			"folder": null,
+			"order": [],
+			"folders_order": [
+				"03762656-b5a7-471e-a387-a98d64d66939",
+				"43369469-6786-47f5-865d-5404b79acce3"
+			]
+		},
+		{
+			"id": "43369469-6786-47f5-865d-5404b79acce3",
+			"name": "Users",
+			"description": "",
+			"auth": null,
+			"events": null,
+			"collection": "1abe5d1d-9f5b-41fe-8387-a0a7e62b8add",
+			"folder": "c170d465-9b32-422b-8506-4236fea43d3d",
+			"order": [
+				"2a34757f-98f4-4610-b68e-57cb33870451",
+				"7c431d82-30fa-40bf-81ab-19798f6fdf3d",
+				"d4d0240a-5bba-4e82-952d-98759ed82768",
+				"d43fc742-9f4a-47df-8d1c-8590b4823b3e",
+				"a06727be-8307-4c86-a6be-ef0cf528ca18",
+				"d2dc7cec-fe5a-417d-ad5d-8cec42912aa8",
+				"d3881083-f868-411d-ae16-0195f9de8e62",
+				"c5f4861b-4ad2-4dda-ab67-09887df9c778",
+				"2e1fcc1b-c6a7-44bc-b7c8-fbc05909657d",
+				"05af6a7f-570d-4d91-9136-4685ccb05297"
+			],
+			"folders_order": []
+		}
+	],
+	"requests": [
+		{
+			"id": "05af6a7f-570d-4d91-9136-4685ccb05297",
+			"name": "Delete user post",
+			"url": "localhost:8080/api/users/2/posts/9",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "1fc4aae6-c0b0-43a6-901a-12781f549c42",
+			"name": "Get all posts",
+			"url": "localhost:8080/api/posts",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "03762656-b5a7-471e-a387-a98d64d66939",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "2a34757f-98f4-4610-b68e-57cb33870451",
+			"name": "Get all users",
+			"url": "localhost:8080/api/users",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "2e1fcc1b-c6a7-44bc-b7c8-fbc05909657d",
+			"name": "Create user post",
+			"url": "localhost:8080/api/users/7/posts",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": ""
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"rawModeData": "{\n  \"text\": \"String 53\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "7c431d82-30fa-40bf-81ab-19798f6fdf3d",
+			"name": "Get user",
+			"url": "localhost:8080/api/users/1",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "9a88cb5b-2504-4623-9f9b-11d7d8cd394f",
+			"name": "Modify post",
+			"url": "localhost:8080/api/posts/2",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "PUT",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "03762656-b5a7-471e-a387-a98d64d66939",
+			"rawModeData": "{\n\t\"text\": \"A moze ala ma kota?\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "a06727be-8307-4c86-a6be-ef0cf528ca18",
+			"name": "Unfollow user",
+			"url": "localhost:8080/api/users/1/follow/6",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "DELETE",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "c5f4861b-4ad2-4dda-ab67-09887df9c778",
+			"name": "Get user post",
+			"url": "localhost:8080/api/users/1/posts/2",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d2dc7cec-fe5a-417d-ad5d-8cec42912aa8",
+			"name": "Get user posts [Wall]",
+			"url": "localhost:8080/api/users/1/posts",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d3881083-f868-411d-ae16-0195f9de8e62",
+			"name": "Get user folowee posts [Timeline]",
+			"url": "localhost:8080/api/users/1/timeline",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d43fc742-9f4a-47df-8d1c-8590b4823b3e",
+			"name": "Follow user",
+			"url": "localhost:8080/api/users/2/follow/6",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d4d0240a-5bba-4e82-952d-98759ed82768",
+			"name": "Create user",
+			"url": "localhost:8080/api/users",
+			"description": "",
+			"data": [],
+			"dataMode": "raw",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "POST",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "43369469-6786-47f5-865d-5404b79acce3",
+			"rawModeData": "{\n  \"username\": \"test3\"\n}",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		},
+		{
+			"id": "d6d7f1c2-bd49-469f-8e5c-79b5993c181f",
+			"name": "Get post",
+			"url": "localhost:8080/api/posts/10",
+			"description": "",
+			"data": null,
+			"dataMode": "params",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"method": "GET",
+			"pathVariableData": [],
+			"queryParams": [],
+			"auth": null,
+			"events": [],
+			"folder": "03762656-b5a7-471e-a387-a98d64d66939",
+			"headers": "Content-Type: application/json\n",
+			"pathVariables": {}
+		}
+	]
+}
